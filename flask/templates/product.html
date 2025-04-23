@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer with Name</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 0.5s;
+            font-family: Arial, sans-serif;
+        }
+        input {
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <form  method="post" >
+        <input type="text" id="name" placeholder="name" />
+        <button type="button" id="colorButton">Change Color</button>
+        <input type="submit" value="submit">
+    </form>
+    <h2 id="greeting"></h2>
+
+    <script>
+        const colorButton = document.getElementById('colorButton');
+        const submitButton = document.getElementById('submitButton');
+        const nameInput = document.getElementById('nameInput');
+        const greeting = document.getElementById('greeting');
+        const colors = ['#FF5733', '#33FF57', '#3357FF', '#F3FF33', '#FF33A8', '#33FFF9'];
+
+        colorButton.addEventListener('click', () => {
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+        });
+
+        submitButton.addEventListener('click', () => {
+            const name = nameInput.value;
+            greeting.textContent = name ? `Hello, ${name}!` : 'Hello!';
+        });
+    </script>
+</body>
+</html>
